@@ -32,6 +32,7 @@ struct ContentView: View {
     
     var loginButton: some View {
         Button(action: {
+            UIApplication.shared.endEditing()
             print(login, " logged in")
         }) {
             Text("Log in")
@@ -80,8 +81,6 @@ struct ContentView: View {
             }
             
             Spacer()
-        }.onTapGesture {
-            UIApplication.shared.endEditing()
         }
     }
 }
