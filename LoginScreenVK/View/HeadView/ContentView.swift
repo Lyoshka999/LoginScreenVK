@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var shouldShowLogo: Bool = true
     @State private var login = ""
     @State private var password = ""
+    @State private var showIncorrentCredentialsWarning = false
+    @Binding var isLoginComplete: Bool
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
@@ -19,6 +21,15 @@ struct ContentView: View {
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
             .map { _ in false }
     ).removeDuplicates()
+    
+    private func verifyLoginData() {
+        if login == "Bar" && password == "Foo" {
+            self.isLoginComplete = true
+        } else {
+            showIncorrentCredentialsWarning = true
+        }
+        password = ""
+    }
     
     var registrationBlockView: some View {
         VStack {
@@ -31,10 +42,11 @@ struct ContentView: View {
     }
     
     var loginButton: some View {
-        Button(action: {
-            UIApplication.shared.endEditing()
-            print(login, " logged in")
-        }) {
+//        Button(action: verifyLoginData {
+//            UIApplication.shared.endEditing()
+//            print(login, " logged in")
+//        })
+        Button(action: verifyLoginData) {
             Text("Log in")
                 .padding()
                 .frame(width: 150, height: 40, alignment: .center)
@@ -81,7 +93,10 @@ struct ContentView: View {
             }
             
             Spacer()
-        }
+        }.onTapGesture {
+            UIApplication.shared.endEditing()
+        }.alert(isPresented: $showIncorrentCredentialsWarning, content: {Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
+        })
     }
 }
 
@@ -91,8 +106,8 @@ extension UIApplication {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(isLoginComplete: .constant(false))
+    }
+}
