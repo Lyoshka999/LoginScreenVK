@@ -15,7 +15,7 @@ struct NavigationContent: View {
         NavigationView {
             HStack {
                 
-                ContentView(isLoginComplete: $isLoginComplete)
+                ContentWebView(isLoginComplete: $isLoginComplete)
                 
                 NavigationLink(
                     destination: HeadView(),
