@@ -4,7 +4,7 @@
 //
 //  Created by Алексей on 15.01.2023.
 //
-
+//MARK: - Домашнее задание к пятому уроку
 import Foundation
 
 enum Style: String {
