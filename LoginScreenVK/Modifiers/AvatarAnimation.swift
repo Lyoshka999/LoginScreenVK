@@ -14,6 +14,7 @@ struct AvatarAnimation: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .scaleEffect(self.scale)
             .animation(Animation.interpolatingSpring(mass: 2,
                                                      stiffness: 50,
                                                      damping: 6,

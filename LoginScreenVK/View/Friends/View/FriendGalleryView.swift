@@ -13,7 +13,7 @@ struct FriendGalleryView: View {
     let friend: Friend
     
     var body: some View {
-        Text("Здесь будет галлерея друзей")
+        Text("Здесь будет галлерея друга")
 //        ASCollectionView(data: self.friend.photos) { photo, context in
 //            Text("\(photo.name)")
 //                .background(Color.green)

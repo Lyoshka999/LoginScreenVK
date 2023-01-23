@@ -8,14 +8,16 @@
 import Foundation
 
 class ParseDataToFriends: Operation {
-    var friends: [Friend] = []
+    var myFriends: [Friend] = []
     
     override func main() {
         guard let getDataOperation = dependencies.first as? GetDataOperation,
               let data = getDataOperation.data
         else { return }
-        let friendsResponse = try? JSONDecoder().decode(Friends.self, from: data)
-        guard let friends = friendsResponse?.response.items else { return }
-        self.friends = friends
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        let friendsResponse = try? jsonDecoder.decode(Friends.self, from: data)
+        guard let myFriends = friendsResponse?.response.items else { return }
+        self.myFriends = myFriends
     }
 }

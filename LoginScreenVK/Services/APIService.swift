@@ -20,7 +20,6 @@ class APIService {
             print("Ошибка получения ключа")
             return nil
         }
-//        print(sessionToken)
         return sessionToken
     }
     
@@ -40,7 +39,7 @@ class APIService {
         operationQueue.addOperation(parseData)
         
         parseData.completionBlock = {
-            completion(parseData.friends)
+            completion(parseData.myFriends)
         }
     }
     
@@ -57,7 +56,7 @@ class APIService {
                 guard let dataResp = data else { return }
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                let groupResponse = try? JSONDecoder().decode(GroupResponse.self, from: dataResp)
+                let groupResponse = try? jsonDecoder.decode(GroupResponse.self, from: dataResp)
                 guard let groups = groupResponse?.response.items else { return }
                 DispatchQueue.main.async {
                     completion(groups)

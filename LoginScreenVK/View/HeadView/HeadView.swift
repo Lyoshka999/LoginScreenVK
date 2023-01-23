@@ -16,17 +16,24 @@ enum Tabs: String {
 struct HeadView: View {
     
     @State var selectedTab: Tabs = .friends
-    let apiService = APIService()
+    
+    let friendViewModel: FriendViewModel
+    let groupViewModel: GroupViewModel
+    
+    init() {
+        let apiService = APIService()
+        self.friendViewModel = FriendViewModel(apiService: apiService)
+        self.groupViewModel = GroupViewModel(apiService: apiService)
+    }
     
     var body: some View {
         
         TabView(selection: $selectedTab) {
-            let friendViewModel = FriendViewModel(apiService: apiService)
             FriendsListView(viewModel: friendViewModel)
                 .tabItem { Label("Друзья", systemImage: "person.2.fill") }
                 .tag(Tabs.friends)
             
-            let groupViewModel = GroupViewModel(apiService: apiService)
+            
             GroupsListView(viewModel: groupViewModel)
                 .tabItem { Label("Группы", systemImage: "person.3.fill") }
                 .tag(Tabs.groups)
