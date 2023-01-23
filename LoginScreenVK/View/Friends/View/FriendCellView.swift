@@ -13,11 +13,11 @@ struct FriendCellView: View {
     
     var body: some View {
         HStack {
-            let url = URL(string: self.friend.photo200_Orig!)
-            KFImage(url)
+            KFImage(self.friend.photo200Orig)
                 .cancelOnDisappear(true)
                 .resizable()
                 .avatarMod()
+                .avatarAnimationModifier()
             
             VStack(alignment: .leading) {
                 Text("\(self.friend.firstName) \(self.friend.lastName)")

@@ -14,6 +14,8 @@ class ParseDataToFriends: Operation {
         guard let getDataOperation = dependencies.first as? GetDataOperation,
               let data = getDataOperation.data
         else { return }
-        let friendsResponse = try? JSONDecoder().decode(Friend.self, from: data)
+        let friendsResponse = try? JSONDecoder().decode(Friends.self, from: data)
+        guard let friends = friendsResponse?.response.items else { return }
+        self.friends = friends
     }
 }

@@ -20,6 +20,7 @@ class APIService {
             print("Ошибка получения ключа")
             return nil
         }
+//        print(sessionToken)
         return sessionToken
     }
     
@@ -54,6 +55,8 @@ class APIService {
             let session =  URLSession(configuration: configuration)
             let task = session.dataTask(with: urlConstructor.url!) { (data, response, error) in
                 guard let dataResp = data else { return }
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 let groupResponse = try? JSONDecoder().decode(GroupResponse.self, from: dataResp)
                 guard let groups = groupResponse?.response.items else { return }
                 DispatchQueue.main.async {
