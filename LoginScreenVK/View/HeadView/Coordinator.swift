@@ -40,7 +40,7 @@ class HeadCoordinator: UITabBarController {
         let newsTabBarItem = UITabBarItem(title: "Новости", image: UIImage(systemName: "newspaper.fill"), tag: 2)
         vcNews.tabBarItem = newsTabBarItem
         
-        let controllers = [vcFriend, vcNews, vcGroup]
+        let controllers = [vcFriend, vcGroup, vcNews]
         self.viewControllers = controllers
         self.navigationItem.title = "navigation"
     }

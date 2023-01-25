@@ -18,7 +18,7 @@ struct NavigationContent: View {
                 ContentWebView(isLoginComplete: $isLoginComplete)
                 
                 NavigationLink(
-                    destination: HeadView(),
+                    destination: ContentSwiftUIFromUIKit(),
                     isActive: self.$isLoginComplete,
                     label: {
                         EmptyView()
