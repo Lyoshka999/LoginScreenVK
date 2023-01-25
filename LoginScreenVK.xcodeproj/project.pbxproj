@@ -40,6 +40,8 @@
 		1FACDD382954A48800146D0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FACDD372954A48800146D0B /* ContentView.swift */; };
 		1FACDD3A2954A48900146D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FACDD392954A48900146D0B /* Assets.xcassets */; };
 		1FACDD3D2954A48900146D0B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FACDD3C2954A48900146D0B /* Preview Assets.xcassets */; };
+		1FDAD7082981A0690086DFBE /* ContentSwiftUIFromUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAD7072981A0690086DFBE /* ContentSwiftUIFromUIKit.swift */; };
+		1FDAD70A2981A1900086DFBE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDAD7092981A1900086DFBE /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		1FACDD372954A48800146D0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1FACDD392954A48900146D0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FACDD3C2954A48900146D0B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1FDAD7072981A0690086DFBE /* ContentSwiftUIFromUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSwiftUIFromUIKit.swift; sourceTree = "<group>"; };
+		1FDAD7092981A1900086DFBE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 				1FACDD352954A48800146D0B /* LoginScreenVKApp.swift */,
 				1F04F074296DE613007A0A67 /* HeadView.swift */,
 				1F04F07A296DE931007A0A67 /* NavigationContent.swift */,
+				1FDAD7072981A0690086DFBE /* ContentSwiftUIFromUIKit.swift */,
+				1FDAD7092981A1900086DFBE /* Coordinator.swift */,
 			);
 			path = HeadView;
 			sourceTree = "<group>";
@@ -377,8 +383,10 @@
 			files = (
 				1F04F059296DE1B4007A0A67 /* Friend.swift in Sources */,
 				1F04F077296DE6FA007A0A67 /* AvatarMod.swift in Sources */,
+				1FDAD70A2981A1900086DFBE /* Coordinator.swift in Sources */,
 				1F04F08A2974350C007A0A67 /* ParseDataToFriends.swift in Sources */,
 				1FACDD382954A48800146D0B /* ContentView.swift in Sources */,
+				1FDAD7082981A0690086DFBE /* ContentSwiftUIFromUIKit.swift in Sources */,
 				1F04F08F297435BC007A0A67 /* APIService.swift in Sources */,
 				1F65541A297EFD0B00FD82A2 /* AvatarAnimation.swift in Sources */,
 				1FACDD362954A48800146D0B /* LoginScreenVKApp.swift in Sources */,

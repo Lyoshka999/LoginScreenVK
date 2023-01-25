@@ -10,6 +10,8 @@ import SwiftUI
 struct NewsListView: View {
     var body: some View {
         VStack {
+            Spacer()
+            
             Text("Здесь будут новости")
             
             Spacer()
