@@ -11,18 +11,19 @@ import Combine
 struct FriendsListView: View {
     
     @ObservedObject var viewModel: FriendViewModel
+    let apiService = APIService()
     
     var body: some View {
         List(self.viewModel.friends) { myFriend in
+            let friendGalleryViewModel = FriendGalleryViewModel(apiService: apiService, friend: myFriend)
             NavigationLink(
-                destination: FriendGalleryView(friend: myFriend),
+                destination: FriendGalleryView(viewModel: friendGalleryViewModel),
                 label: {
                     FriendCellView(friend: myFriend)
                 })
         }.onAppear{
             viewModel.getFriends()
         }
-        
     }
 }
 

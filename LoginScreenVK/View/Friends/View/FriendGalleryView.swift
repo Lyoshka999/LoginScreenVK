@@ -6,30 +6,34 @@
 //
 
 import SwiftUI
-import ASCollectionView
+import Kingfisher
 
 struct FriendGalleryView: View {
     
-    let friend: Friend
+    @ObservedObject var viewModel: FriendGalleryViewModel
+    
+    private let columns: [GridItem] = [
+        GridItem.init(.flexible(minimum: 0, maximum: .infinity)),
+        GridItem.init(.flexible(minimum: 0, maximum: .infinity)),
+        GridItem.init(.flexible(minimum: 0, maximum: .infinity))
+    ]
+    
     
     var body: some View {
-        Text("Здесь будет галлерея друга")
-//        ASCollectionView(data: self.friend.photos) { photo, context in
-//            Text("\(photo.name)")
-//                .background(Color.green)
-//        }
-//        .layout {
-//            .grid(
-//                layoutMode: .adaptive(withMinItemSize: 50),
-//                itemSpacing: 5,
-//                lineSpacing: 5,
-//                itemSize: .absolute(50))
-//        }
+        ScrollView(.vertical) {
+            LazyVGrid(columns: columns, alignment: .center, spacing: 8, pinnedViews: .sectionHeaders)
+            {
+                ForEach(self.viewModel.photos) { photo in
+                    KFImage(photo.findOptimalSize())
+                        .cancelOnDisappear(true)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 135, height: 135, alignment: .center)
+                }
+            }
+        }.onAppear(perform: {
+            self.viewModel.getPhotos()
+        })
+            
     }
 }
-
-//struct FriendGalleryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FriendGalleryView(friend: Friend(id: 0, firstName: "Lyoshka", lastName: "Sidorenko"))
-//    }
-//}

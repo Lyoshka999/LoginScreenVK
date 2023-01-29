@@ -45,3 +45,10 @@ struct LikeView: View {
         
     }
 }
+
+struct LikeView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = LikeViewModel(countLikes: 50)
+        LikeView(viewModel: viewModel)
+    }
+}
